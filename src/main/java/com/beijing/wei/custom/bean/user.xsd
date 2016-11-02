@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://www.weixingyu.cn/schema/user"
+	xmlns:tns="http://www.weixingyu.cn/schema/user"
+	elementFormDefault="qualified">
+	<element name="tx">
+		<complexType>
+			<attribute name="id" type="string" />
+			<attribute name="userId" type="string" />
+			<attribute name="userName" type="string" />
+		</complexType>
+	</element>
+</schema>

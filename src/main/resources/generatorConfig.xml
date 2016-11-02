@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration >
+  <classPathEntry location="/Users/weixingyu/Documents/MavenRepository/mysql/mysql-connector-java/5.1.23/mysql-connector-java-5.1.23.jar" /> 
+  <context id="MySqlTables" targetRuntime="MyBatis3"> 
+  <!-- 分頁插件 -->
+  <plugin type="com.beijing.wei.util.file.generatorMybatis.MysqlPaginationPlugin" /> 
+  <!-- 注释 -->  
+    <commentGenerator >  
+         <property name="suppressAllComments" value="true"/><!-- 是否取消注释 -->  
+         <property name="suppressDate" value="true" /> <!-- 是否生成注释代时间戳-->  
+    </commentGenerator>  
+  <!-- jdbc连接 -->
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/project?characterEncoding=utf8" userId="root" password="a18217388590" />
+    <javaModelGenerator targetPackage="com.beijing.wei.login.model" targetProject="project" />
+    <sqlMapGenerator targetPackage="com.beijing.wei.login.mapper" targetProject="project" />
+    <javaClientGenerator targetPackage="com.beijing.wei.login.mapper" targetProject="project" type="XMLMAPPER" />
+    <table schema="project" tableName="project_user" >
+    </table>
+    <table schema="project" tableName="project_user_all" >
+    </table>
+  </context>
+</generatorConfiguration>

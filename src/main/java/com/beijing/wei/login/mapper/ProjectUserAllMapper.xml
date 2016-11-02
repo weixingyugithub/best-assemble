@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.beijing.wei.login.mapper.ProjectUserAllMapper" >
+  <resultMap id="BaseResultMap" type="com.beijing.wei.login.model.ProjectUserAll" >
+    <id column="user_all_id" property="userAllId" jdbcType="VARCHAR" />
+    <result column="user_all_name" property="userAllName" jdbcType="VARCHAR" />
+    <result column="user_all_pass" property="userAllPass" jdbcType="VARCHAR" />
+    <result column="user_all_surname" property="userAllSurname" jdbcType="VARCHAR" />
+    <result column="user_all_firstname" property="userAllFirstname" jdbcType="VARCHAR" />
+    <result column="user_all_compellation" property="userAllCompellation" jdbcType="VARCHAR" />
+    <result column="user_all_birthday" property="userAllBirthday" jdbcType="TIMESTAMP" />
+    <result column="user_all_email" property="userAllEmail" jdbcType="VARCHAR" />
+    <result column="user_all_phone" property="userAllPhone" jdbcType="VARCHAR" />
+    <result column="user_all_native" property="userAllNative" jdbcType="VARCHAR" />
+    <result column="user_all_province" property="userAllProvince" jdbcType="VARCHAR" />
+    <result column="user_all_city" property="userAllCity" jdbcType="VARCHAR" />
+    <result column="user_all_county" property="userAllCounty" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    user_all_id, user_all_name, user_all_pass, user_all_surname, user_all_firstname, 
+    user_all_compellation, user_all_birthday, user_all_email, user_all_phone, user_all_native, 
+    user_all_province, user_all_city, user_all_county
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.beijing.wei.login.model.ProjectUserAllExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from project_user_all
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="page != null" >
+      limit #{page.begin} , #{page.length}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from project_user_all
+    where user_all_id = #{userAllId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from project_user_all
+    where user_all_id = #{userAllId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.beijing.wei.login.model.ProjectUserAllExample" >
+    delete from project_user_all
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.beijing.wei.login.model.ProjectUserAll" >
+    insert into project_user_all (user_all_id, user_all_name, user_all_pass, 
+      user_all_surname, user_all_firstname, user_all_compellation, 
+      user_all_birthday, user_all_email, user_all_phone, 
+      user_all_native, user_all_province, user_all_city, 
+      user_all_county)
+    values (#{userAllId,jdbcType=VARCHAR}, #{userAllName,jdbcType=VARCHAR}, #{userAllPass,jdbcType=VARCHAR}, 
+      #{userAllSurname,jdbcType=VARCHAR}, #{userAllFirstname,jdbcType=VARCHAR}, #{userAllCompellation,jdbcType=VARCHAR}, 
+      #{userAllBirthday,jdbcType=TIMESTAMP}, #{userAllEmail,jdbcType=VARCHAR}, #{userAllPhone,jdbcType=VARCHAR}, 
+      #{userAllNative,jdbcType=VARCHAR}, #{userAllProvince,jdbcType=VARCHAR}, #{userAllCity,jdbcType=VARCHAR}, 
+      #{userAllCounty,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.beijing.wei.login.model.ProjectUserAll" >
+    insert into project_user_all
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userAllId != null" >
+        user_all_id,
+      </if>
+      <if test="userAllName != null" >
+        user_all_name,
+      </if>
+      <if test="userAllPass != null" >
+        user_all_pass,
+      </if>
+      <if test="userAllSurname != null" >
+        user_all_surname,
+      </if>
+      <if test="userAllFirstname != null" >
+        user_all_firstname,
+      </if>
+      <if test="userAllCompellation != null" >
+        user_all_compellation,
+      </if>
+      <if test="userAllBirthday != null" >
+        user_all_birthday,
+      </if>
+      <if test="userAllEmail != null" >
+        user_all_email,
+      </if>
+      <if test="userAllPhone != null" >
+        user_all_phone,
+      </if>
+      <if test="userAllNative != null" >
+        user_all_native,
+      </if>
+      <if test="userAllProvince != null" >
+        user_all_province,
+      </if>
+      <if test="userAllCity != null" >
+        user_all_city,
+      </if>
+      <if test="userAllCounty != null" >
+        user_all_county,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userAllId != null" >
+        #{userAllId,jdbcType=VARCHAR},
+      </if>
+      <if test="userAllName != null" >
+        #{userAllName,jdbcType=VARCHAR},
+      </if>
+      <if test="userAllPass != null" >
+        #{userAllPass,jdbcType=VARCHAR},
+      </if>
+      <if test="userAllSurname != null" >
+        #{userAllSurname,jdbcType=VARCHAR},
+      </if>
+      <if test="userAllFirstname != null" >
+        #{userAllFirstname,jdbcType=VARCHAR},
+      </if>
+      <if test="userAllCompellation != null" >
+        #{userAllCompellation,jdbcType=VARCHAR},
+      </if>
+      <if test="userAllBirthday != null" >
+        #{userAllBirthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userAllEmail != null" >
+        #{userAllEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="userAllPhone != null" >
+        #{userAllPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="userAllNative != null" >
+        #{userAllNative,jdbcType=VARCHAR},
+      </if>
+      <if test="userAllProvince != null" >
+        #{userAllProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="userAllCity != null" >
+        #{userAllCity,jdbcType=VARCHAR},
+      </if>
+      <if test="userAllCounty != null" >
+        #{userAllCounty,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.beijing.wei.login.model.ProjectUserAllExample" resultType="java.lang.Integer" >
+    select count(*) from project_user_all
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update project_user_all
+    <set >
+      <if test="record.userAllId != null" >
+        user_all_id = #{record.userAllId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userAllName != null" >
+        user_all_name = #{record.userAllName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userAllPass != null" >
+        user_all_pass = #{record.userAllPass,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userAllSurname != null" >
+        user_all_surname = #{record.userAllSurname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userAllFirstname != null" >
+        user_all_firstname = #{record.userAllFirstname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userAllCompellation != null" >
+        user_all_compellation = #{record.userAllCompellation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userAllBirthday != null" >
+        user_all_birthday = #{record.userAllBirthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.userAllEmail != null" >
+        user_all_email = #{record.userAllEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userAllPhone != null" >
+        user_all_phone = #{record.userAllPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userAllNative != null" >
+        user_all_native = #{record.userAllNative,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userAllProvince != null" >
+        user_all_province = #{record.userAllProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userAllCity != null" >
+        user_all_city = #{record.userAllCity,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userAllCounty != null" >
+        user_all_county = #{record.userAllCounty,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update project_user_all
+    set user_all_id = #{record.userAllId,jdbcType=VARCHAR},
+      user_all_name = #{record.userAllName,jdbcType=VARCHAR},
+      user_all_pass = #{record.userAllPass,jdbcType=VARCHAR},
+      user_all_surname = #{record.userAllSurname,jdbcType=VARCHAR},
+      user_all_firstname = #{record.userAllFirstname,jdbcType=VARCHAR},
+      user_all_compellation = #{record.userAllCompellation,jdbcType=VARCHAR},
+      user_all_birthday = #{record.userAllBirthday,jdbcType=TIMESTAMP},
+      user_all_email = #{record.userAllEmail,jdbcType=VARCHAR},
+      user_all_phone = #{record.userAllPhone,jdbcType=VARCHAR},
+      user_all_native = #{record.userAllNative,jdbcType=VARCHAR},
+      user_all_province = #{record.userAllProvince,jdbcType=VARCHAR},
+      user_all_city = #{record.userAllCity,jdbcType=VARCHAR},
+      user_all_county = #{record.userAllCounty,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.beijing.wei.login.model.ProjectUserAll" >
+    update project_user_all
+    <set >
+      <if test="userAllName != null" >
+        user_all_name = #{userAllName,jdbcType=VARCHAR},
+      </if>
+      <if test="userAllPass != null" >
+        user_all_pass = #{userAllPass,jdbcType=VARCHAR},
+      </if>
+      <if test="userAllSurname != null" >
+        user_all_surname = #{userAllSurname,jdbcType=VARCHAR},
+      </if>
+      <if test="userAllFirstname != null" >
+        user_all_firstname = #{userAllFirstname,jdbcType=VARCHAR},
+      </if>
+      <if test="userAllCompellation != null" >
+        user_all_compellation = #{userAllCompellation,jdbcType=VARCHAR},
+      </if>
+      <if test="userAllBirthday != null" >
+        user_all_birthday = #{userAllBirthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userAllEmail != null" >
+        user_all_email = #{userAllEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="userAllPhone != null" >
+        user_all_phone = #{userAllPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="userAllNative != null" >
+        user_all_native = #{userAllNative,jdbcType=VARCHAR},
+      </if>
+      <if test="userAllProvince != null" >
+        user_all_province = #{userAllProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="userAllCity != null" >
+        user_all_city = #{userAllCity,jdbcType=VARCHAR},
+      </if>
+      <if test="userAllCounty != null" >
+        user_all_county = #{userAllCounty,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user_all_id = #{userAllId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.beijing.wei.login.model.ProjectUserAll" >
+    update project_user_all
+    set user_all_name = #{userAllName,jdbcType=VARCHAR},
+      user_all_pass = #{userAllPass,jdbcType=VARCHAR},
+      user_all_surname = #{userAllSurname,jdbcType=VARCHAR},
+      user_all_firstname = #{userAllFirstname,jdbcType=VARCHAR},
+      user_all_compellation = #{userAllCompellation,jdbcType=VARCHAR},
+      user_all_birthday = #{userAllBirthday,jdbcType=TIMESTAMP},
+      user_all_email = #{userAllEmail,jdbcType=VARCHAR},
+      user_all_phone = #{userAllPhone,jdbcType=VARCHAR},
+      user_all_native = #{userAllNative,jdbcType=VARCHAR},
+      user_all_province = #{userAllProvince,jdbcType=VARCHAR},
+      user_all_city = #{userAllCity,jdbcType=VARCHAR},
+      user_all_county = #{userAllCounty,jdbcType=VARCHAR}
+    where user_all_id = #{userAllId,jdbcType=VARCHAR}
+  </update>
+</mapper>

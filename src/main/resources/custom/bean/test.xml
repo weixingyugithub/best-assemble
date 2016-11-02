@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="GBK"?>
+<beans default-lazy-init="true"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:wxy="http://www.weixingyu.cn/schema/user"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.weixingyu.cn/schema/user
+		http://www.weixingyu.cn/schema/user.xsd">
+
+	<wxy:tx id="tBean" userId="sdf" userName="ttt" />
+
+</beans>
